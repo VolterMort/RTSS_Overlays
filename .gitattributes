@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# RTSS overlays are ANSI INI files with CRLF line endings; keep them byte-for-byte
+*.ovl -text
+*.png binary

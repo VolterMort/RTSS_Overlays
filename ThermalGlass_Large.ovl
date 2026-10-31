@@ -1,0 +1,2548 @@
+; Thermal Glass - standalone RTSS OverlayEditor layout, English UI.
+; 59 external sensors: 28 WireView, 10 extra GPU temperatures, 21 system readings.
+; Reads MSI Afterburner shared memory only. No hardware access or configuration writes.
+; Glass tint: alpha 0x26 (~15%). Text stays opaque. No background image or blur shader.
+; RAM PROCESS is below CPU USAGE; RAM USAGE is the separate total system reading.
+; Native RTSS API/FPS/frametime and autoscaled per-application history graphs.
+[Master]
+Implementation=2
+FontFace=Bahnschrift
+FontHeight=-16
+FontWeight=400
+ZoomRatio=1
+
+[Settings]
+Name=Thermal Glass - Large
+EnvVars=
+RefreshPeriod=1000
+LockUserSettings=1
+EmbeddedImage=
+PingAddr=
+
+[General]
+Sources=59
+Tables=0
+Layers=161
+
+[Source0]
+Name=GPU Temp
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=GPU temperature
+
+[Source1]
+Name=GPU Load
+Units=%
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=GPU usage
+
+[Source2]
+Name=GPU Clock
+Units=MHz
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Core clock
+
+[Source3]
+Name=GPU Power
+Units=W
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Power
+
+[Source4]
+Name=GPU Voltage
+Units=V
+Format=%.3f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=GPU voltage
+
+[Source5]
+Name=GPU Power Percent
+Units=%
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Power percent
+
+[Source6]
+Name=VRAM Used
+Units=MB
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Memory usage
+
+[Source7]
+Name=VRAM Clock
+Units=MHz
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Memory clock
+
+[Source8]
+Name=VRAM Process
+Units=MB
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Memory usage \ process
+
+[Source9]
+Name=CPU Temp
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=CPU temperature
+
+[Source10]
+Name=CPU Load
+Units=%
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=CPU usage
+
+[Source11]
+Name=CPU Clock
+Units=MHz
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=CPU clock
+
+[Source12]
+Name=CPU Power
+Units=W
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=CPU power
+
+[Source13]
+Name=RAM Used
+Units=MB
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=RAM usage
+
+[Source14]
+Name=Fan 1 Duty
+Units=%
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Fan speed
+
+[Source15]
+Name=Fan 1 RPM
+Units=RPM
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Fan tachometer
+
+[Source16]
+Name=Fan 2 Duty
+Units=%
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Fan speed 2
+
+[Source17]
+Name=Fan 2 RPM
+Units=RPM
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Fan tachometer 2
+
+[Source18]
+Name=Fan 3 Duty
+Units=%
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Fan speed 3
+
+[Source19]
+Name=Fan 3 RPM
+Units=RPM
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=Fan tachometer 3
+
+[Source20]
+Name=WV Power
+Units=W
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Total power
+
+[Source21]
+Name=WV Current
+Units=A
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Total current
+
+[Source22]
+Name=WV Voltage
+Units=V
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Average voltage
+
+[Source23]
+Name=WV P1 V
+Units=V
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 1 voltage
+
+[Source24]
+Name=WV P1 A
+Units=A
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 1 current
+
+[Source25]
+Name=WV P1 W
+Units=W
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 1 power
+
+[Source26]
+Name=WV P2 V
+Units=V
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 2 voltage
+
+[Source27]
+Name=WV P2 A
+Units=A
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 2 current
+
+[Source28]
+Name=WV P2 W
+Units=W
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 2 power
+
+[Source29]
+Name=WV P3 V
+Units=V
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 3 voltage
+
+[Source30]
+Name=WV P3 A
+Units=A
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 3 current
+
+[Source31]
+Name=WV P3 W
+Units=W
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 3 power
+
+[Source32]
+Name=WV P4 V
+Units=V
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 4 voltage
+
+[Source33]
+Name=WV P4 A
+Units=A
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 4 current
+
+[Source34]
+Name=WV P4 W
+Units=W
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 4 power
+
+[Source35]
+Name=WV P5 V
+Units=V
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 5 voltage
+
+[Source36]
+Name=WV P5 A
+Units=A
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 5 current
+
+[Source37]
+Name=WV P5 W
+Units=W
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 5 power
+
+[Source38]
+Name=WV P6 V
+Units=V
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 6 voltage
+
+[Source39]
+Name=WV P6 A
+Units=A
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 6 current
+
+[Source40]
+Name=WV P6 W
+Units=W
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Pin 6 power
+
+[Source41]
+Name=WV IN
+Units=°C
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Temperature in
+
+[Source42]
+Name=WV OUT
+Units=°C
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Temperature out
+
+[Source43]
+Name=WV EXT 1
+Units=°C
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView External temperature 1
+
+[Source44]
+Name=WV EXT 2
+Units=°C
+Format=%.1f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView External temperature 2
+
+[Source45]
+Name=WV Fan
+Units=%
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Fan duty
+
+[Source46]
+Name=WV Connected
+Units=
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Connected
+
+[Source47]
+Name=WV Cable
+Units=W
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=WireView Cable rating
+
+[Source48]
+Name=GPU Hotspot
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=GPU hotspot temperature
+
+[Source49]
+Name=GPU Memory Junction
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=GPU memory junction temperature
+
+[Source50]
+Name=VRAM Chip 0
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=VRAM chip 0
+
+[Source51]
+Name=VRAM Chip 1
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=VRAM chip 1
+
+[Source52]
+Name=VRAM Chip 2
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=VRAM chip 2
+
+[Source53]
+Name=VRAM Chip 3
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=VRAM chip 3
+
+[Source54]
+Name=VRAM Chip 4
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=VRAM chip 4
+
+[Source55]
+Name=VRAM Chip 5
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=VRAM chip 5
+
+[Source56]
+Name=VRAM Chip 6
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=VRAM chip 6
+
+[Source57]
+Name=VRAM Chip 7
+Units=°C
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=VRAM chip 7
+
+[Source58]
+Name=RAM Process
+Units=MB
+Format=%.0f
+Formula=
+Provider=MSI Afterburner
+SrcId=FFFFFFFF
+Gpu=FFFFFFFF
+SrcName=RAM usage \ process
+
+[Layer0]
+Name=Glass tint
+Text=<B=640,1344,R8>
+PositionX=0
+PositionY=0
+ExtentX=640
+ExtentY=1344
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=26081422
+
+[Layer1]
+Name=Glass outline
+Text=<B=640,1344,1>
+PositionX=0
+PositionY=0
+ExtentX=640
+ExtentY=1344
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=5035D9EF
+
+[Layer2]
+Name=GPU thermals heading
+Text=GPU THERMALS
+PositionX=20
+PositionY=20
+ExtentX=600
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=135
+TextColor=35D9EF
+
+[Layer3]
+Name=GPU thermals heading separator
+Text=<B=600,1>
+PositionX=20
+PositionY=51
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer4]
+Name=GPU CORE caption
+Text=GPU CORE
+PositionX=20
+PositionY=67
+ExtentX=190
+ExtentY=21
+ExtentOrigin=0
+FixedAlignment=1
+Size=95
+TextColor=ADC7DB
+
+[Layer5]
+Name=GPU CORE temperature
+Text=%GPU Temp%<S=-100> °C<S>
+PositionX=20
+PositionY=91
+ExtentX=190
+ExtentY=49
+ExtentOrigin=0
+FixedAlignment=1
+Size=230
+TextColor=EEF6FC
+
+[Layer6]
+Name=GPU HOTSPOT caption
+Text=GPU HOTSPOT
+PositionX=225
+PositionY=67
+ExtentX=190
+ExtentY=21
+ExtentOrigin=0
+FixedAlignment=1
+Size=95
+TextColor=ADC7DB
+
+[Layer7]
+Name=GPU HOTSPOT temperature
+Text=%GPU Hotspot%<S=-100> °C<S>
+PositionX=225
+PositionY=91
+ExtentX=190
+ExtentY=49
+ExtentOrigin=0
+FixedAlignment=1
+Size=230
+TextColor=EEF6FC
+
+[Layer8]
+Name=MEMORY JUNCTION caption
+Text=MEMORY JUNCTION
+PositionX=430
+PositionY=67
+ExtentX=190
+ExtentY=21
+ExtentOrigin=0
+FixedAlignment=1
+Size=95
+TextColor=ADC7DB
+
+[Layer9]
+Name=MEMORY JUNCTION temperature
+Text=%GPU Memory Junction%<S=-100> °C<S>
+PositionX=430
+PositionY=91
+ExtentX=190
+ExtentY=49
+ExtentOrigin=0
+FixedAlignment=1
+Size=230
+TextColor=EEF6FC
+
+[Layer10]
+Name=Thermal divider 210
+Text=<B=1,74>
+PositionX=210
+PositionY=65
+ExtentX=1
+ExtentY=74
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer11]
+Name=Thermal divider 415
+Text=<B=1,74>
+PositionX=415
+PositionY=65
+ExtentX=1
+ExtentY=74
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer12]
+Name=VRAM chip temperatures heading
+Text=VRAM CHIP TEMPERATURES <S=-85> °C<S>
+PositionX=20
+PositionY=157
+ExtentX=600
+ExtentY=26
+ExtentOrigin=0
+FixedAlignment=1
+Size=115
+TextColor=35D9EF
+
+[Layer13]
+Name=Chip temperature heading separator
+Text=<B=600,1>
+PositionX=20
+PositionY=184
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer14]
+Name=VRAM chip 0 index
+Text=0
+PositionX=20
+PositionY=194
+ExtentX=75
+ExtentY=22
+ExtentOrigin=1
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer15]
+Name=VRAM chip 0 temperature
+Text=%VRAM Chip 0%
+PositionX=20
+PositionY=220
+ExtentX=75
+ExtentY=34
+ExtentOrigin=1
+FixedAlignment=1
+Size=150
+TextColor=EEF6FC
+
+[Layer16]
+Name=VRAM chip 1 index
+Text=1
+PositionX=95
+PositionY=194
+ExtentX=75
+ExtentY=22
+ExtentOrigin=1
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer17]
+Name=VRAM chip 1 temperature
+Text=%VRAM Chip 1%
+PositionX=95
+PositionY=220
+ExtentX=75
+ExtentY=34
+ExtentOrigin=1
+FixedAlignment=1
+Size=150
+TextColor=EEF6FC
+
+[Layer18]
+Name=VRAM chip 1 divider
+Text=<B=1,61>
+PositionX=95
+PositionY=194
+ExtentX=1
+ExtentY=61
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer19]
+Name=VRAM chip 2 index
+Text=2
+PositionX=170
+PositionY=194
+ExtentX=75
+ExtentY=22
+ExtentOrigin=1
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer20]
+Name=VRAM chip 2 temperature
+Text=%VRAM Chip 2%
+PositionX=170
+PositionY=220
+ExtentX=75
+ExtentY=34
+ExtentOrigin=1
+FixedAlignment=1
+Size=150
+TextColor=EEF6FC
+
+[Layer21]
+Name=VRAM chip 2 divider
+Text=<B=1,61>
+PositionX=170
+PositionY=194
+ExtentX=1
+ExtentY=61
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer22]
+Name=VRAM chip 3 index
+Text=3
+PositionX=245
+PositionY=194
+ExtentX=75
+ExtentY=22
+ExtentOrigin=1
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer23]
+Name=VRAM chip 3 temperature
+Text=%VRAM Chip 3%
+PositionX=245
+PositionY=220
+ExtentX=75
+ExtentY=34
+ExtentOrigin=1
+FixedAlignment=1
+Size=150
+TextColor=EEF6FC
+
+[Layer24]
+Name=VRAM chip 3 divider
+Text=<B=1,61>
+PositionX=245
+PositionY=194
+ExtentX=1
+ExtentY=61
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer25]
+Name=VRAM chip 4 index
+Text=4
+PositionX=320
+PositionY=194
+ExtentX=75
+ExtentY=22
+ExtentOrigin=1
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer26]
+Name=VRAM chip 4 temperature
+Text=%VRAM Chip 4%
+PositionX=320
+PositionY=220
+ExtentX=75
+ExtentY=34
+ExtentOrigin=1
+FixedAlignment=1
+Size=150
+TextColor=EEF6FC
+
+[Layer27]
+Name=VRAM chip 4 divider
+Text=<B=1,61>
+PositionX=320
+PositionY=194
+ExtentX=1
+ExtentY=61
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer28]
+Name=VRAM chip 5 index
+Text=5
+PositionX=395
+PositionY=194
+ExtentX=75
+ExtentY=22
+ExtentOrigin=1
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer29]
+Name=VRAM chip 5 temperature
+Text=%VRAM Chip 5%
+PositionX=395
+PositionY=220
+ExtentX=75
+ExtentY=34
+ExtentOrigin=1
+FixedAlignment=1
+Size=150
+TextColor=EEF6FC
+
+[Layer30]
+Name=VRAM chip 5 divider
+Text=<B=1,61>
+PositionX=395
+PositionY=194
+ExtentX=1
+ExtentY=61
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer31]
+Name=VRAM chip 6 index
+Text=6
+PositionX=470
+PositionY=194
+ExtentX=75
+ExtentY=22
+ExtentOrigin=1
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer32]
+Name=VRAM chip 6 temperature
+Text=%VRAM Chip 6%
+PositionX=470
+PositionY=220
+ExtentX=75
+ExtentY=34
+ExtentOrigin=1
+FixedAlignment=1
+Size=150
+TextColor=EEF6FC
+
+[Layer33]
+Name=VRAM chip 6 divider
+Text=<B=1,61>
+PositionX=470
+PositionY=194
+ExtentX=1
+ExtentY=61
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer34]
+Name=VRAM chip 7 index
+Text=7
+PositionX=545
+PositionY=194
+ExtentX=75
+ExtentY=22
+ExtentOrigin=1
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer35]
+Name=VRAM chip 7 temperature
+Text=%VRAM Chip 7%
+PositionX=545
+PositionY=220
+ExtentX=75
+ExtentY=34
+ExtentOrigin=1
+FixedAlignment=1
+Size=150
+TextColor=EEF6FC
+
+[Layer36]
+Name=VRAM chip 7 divider
+Text=<B=1,61>
+PositionX=545
+PositionY=194
+ExtentX=1
+ExtentY=61
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer37]
+Name=GPU thermal block separator
+Text=<B=600,1>
+PositionX=20
+PositionY=264
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer38]
+Name=GPU details heading
+Text=GPU DETAILS
+PositionX=20
+PositionY=282
+ExtentX=600
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=135
+TextColor=35D9EF
+
+[Layer39]
+Name=GPU details heading separator
+Text=<B=600,1>
+PositionX=20
+PositionY=313
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer40]
+Name=GPU GPU USAGE label
+Text=GPU USAGE
+PositionX=20
+PositionY=331
+ExtentX=168
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer41]
+Name=GPU GPU USAGE value
+Text=%GPU Load%<S=-85> %<S>
+PositionX=196
+PositionY=329
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer42]
+Name=GPU CORE CLOCK label
+Text=CORE CLOCK
+PositionX=20
+PositionY=365
+ExtentX=168
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer43]
+Name=GPU CORE CLOCK value
+Text=%GPU Clock%<S=-85> MHz<S>
+PositionX=196
+PositionY=363
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer44]
+Name=GPU BOARD POWER label
+Text=BOARD POWER
+PositionX=20
+PositionY=399
+ExtentX=168
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer45]
+Name=GPU BOARD POWER value
+Text=%GPU Power%<S=-85> W<S>
+PositionX=196
+PositionY=397
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer46]
+Name=GPU CORE VOLTAGE label
+Text=CORE VOLTAGE
+PositionX=20
+PositionY=433
+ExtentX=168
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer47]
+Name=GPU CORE VOLTAGE value
+Text=%GPU Voltage%<S=-85> V<S>
+PositionX=196
+PositionY=431
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer48]
+Name=GPU POWER PERCENTAGE label
+Text=POWER PERCENTAGE
+PositionX=20
+PositionY=467
+ExtentX=168
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer49]
+Name=GPU POWER PERCENTAGE value
+Text=%GPU Power Percent%<S=-85> %<S>
+PositionX=196
+PositionY=465
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer50]
+Name=VRAM USED label
+Text=VRAM USED
+PositionX=347
+PositionY=331
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer51]
+Name=VRAM USED value
+Text=%VRAM Used%<S=-85> MB<S>
+PositionX=475
+PositionY=329
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer52]
+Name=VRAM CLOCK label
+Text=VRAM CLOCK
+PositionX=347
+PositionY=365
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer53]
+Name=VRAM CLOCK value
+Text=%VRAM Clock%<S=-85> MHz<S>
+PositionX=475
+PositionY=363
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer54]
+Name=VRAM PROCESS label
+Text=VRAM PROCESS
+PositionX=347
+PositionY=399
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer55]
+Name=VRAM PROCESS value
+Text=%VRAM Process%<S=-85> MB<S>
+PositionX=475
+PositionY=397
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer56]
+Name=GPU detail divider
+Text=<B=1,209>
+PositionX=320
+PositionY=327
+ExtentX=1
+ExtentY=209
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer57]
+Name=VRAM fan separator
+Text=<B=273,1>
+PositionX=347
+PositionY=428
+ExtentX=273
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer58]
+Name=GPU fan 1 label
+Text=FAN 1
+PositionX=347
+PositionY=447
+ExtentX=65
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer59]
+Name=GPU fan 1 readings
+Text=%Fan 1 Duty%<S=-85> %<S> / %Fan 1 RPM%<S=-85> RPM<S>
+PositionX=419
+PositionY=445
+ExtentX=201
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=105
+TextColor=EEF6FC
+
+[Layer60]
+Name=GPU fan 2 label
+Text=FAN 2
+PositionX=347
+PositionY=481
+ExtentX=65
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer61]
+Name=GPU fan 2 readings
+Text=%Fan 2 Duty%<S=-85> %<S> / %Fan 2 RPM%<S=-85> RPM<S>
+PositionX=419
+PositionY=479
+ExtentX=201
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=105
+TextColor=EEF6FC
+
+[Layer62]
+Name=GPU fan 3 label
+Text=FAN 3
+PositionX=347
+PositionY=515
+ExtentX=65
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer63]
+Name=GPU fan 3 readings
+Text=%Fan 3 Duty%<S=-85> %<S> / %Fan 3 RPM%<S=-85> RPM<S>
+PositionX=419
+PositionY=513
+ExtentX=201
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=105
+TextColor=EEF6FC
+
+[Layer64]
+Name=GPU detail block separator
+Text=<B=600,1>
+PositionX=20
+PositionY=552
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer65]
+Name=CPU and RAM heading
+Text=CPU & RAM
+PositionX=20
+PositionY=570
+ExtentX=600
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=135
+TextColor=35D9EF
+
+[Layer66]
+Name=CPU and RAM heading separator
+Text=<B=600,1>
+PositionX=20
+PositionY=601
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer67]
+Name=CPU TEMPERATURE label
+Text=CPU TEMPERATURE
+PositionX=20
+PositionY=621
+ExtentX=168
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer68]
+Name=CPU TEMPERATURE value
+Text=%CPU Temp%<S=-85> °C<S>
+PositionX=196
+PositionY=619
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer69]
+Name=CPU USAGE label
+Text=CPU USAGE
+PositionX=20
+PositionY=653
+ExtentX=168
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer70]
+Name=CPU USAGE value
+Text=%CPU Load%<S=-85> %<S>
+PositionX=196
+PositionY=651
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer71]
+Name=RAM PROCESS label
+Text=RAM PROCESS
+PositionX=20
+PositionY=685
+ExtentX=168
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer72]
+Name=RAM PROCESS value
+Text=%RAM Process%<S=-85> MB<S>
+PositionX=196
+PositionY=683
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer73]
+Name=CPU CLOCK label
+Text=CPU CLOCK
+PositionX=347
+PositionY=621
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer74]
+Name=CPU CLOCK value
+Text=%CPU Clock%<S=-85> MHz<S>
+PositionX=475
+PositionY=619
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer75]
+Name=CPU POWER label
+Text=CPU POWER
+PositionX=347
+PositionY=653
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer76]
+Name=CPU POWER value
+Text=%CPU Power%<S=-85> W<S>
+PositionX=475
+PositionY=651
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer77]
+Name=RAM USAGE label
+Text=RAM USAGE
+PositionX=347
+PositionY=685
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer78]
+Name=RAM USAGE value
+Text=%RAM Used%<S=-85> MB<S>
+PositionX=475
+PositionY=683
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer79]
+Name=CPU RAM column divider
+Text=<B=1,88>
+PositionX=320
+PositionY=617
+ExtentX=1
+ExtentY=88
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer80]
+Name=CPU RAM block separator
+Text=<B=600,1>
+PositionX=20
+PositionY=719
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer81]
+Name=WireView heading
+Text=WireView Pro II
+PositionX=20
+PositionY=739
+ExtentX=325
+ExtentY=29
+ExtentOrigin=0
+FixedAlignment=1
+Size=135
+TextColor=35D9EF
+
+[Layer82]
+Name=WireView connection dot
+Text=<IF WV Connected><C=57E389><B=8,8,R4><ELSE><C=E9B86C><B=8,8,R4><IF><C>
+PositionX=413
+PositionY=748
+ExtentX=8
+ExtentY=16
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=EEF6FC
+
+[Layer83]
+Name=WireView connection status
+Text=<IF WV Connected><C=57E389>USB CONNECTED<ELSE><C=E9B86C>USB DISCONNECTED<IF><C>
+PositionX=430
+PositionY=745
+ExtentX=190
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=EEF6FC
+
+[Layer84]
+Name=WireView heading separator
+Text=<B=600,1>
+PositionX=20
+PositionY=773
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer85]
+Name=Connector power label
+Text=CONNECTOR POWER
+PositionX=20
+PositionY=799
+ExtentX=165
+ExtentY=25
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer86]
+Name=Connector power value
+Text=<IF WV Connected>%WV Power%<S=-100> W<S><ELSE>--<IF>
+PositionX=190
+PositionY=789
+ExtentX=118
+ExtentY=42
+ExtentOrigin=0
+FixedAlignment=1
+Size=180
+TextColor=35D9EF
+
+[Layer87]
+Name=Total connector current label
+Text=TOTAL CURRENT
+PositionX=20
+PositionY=845
+ExtentX=165
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer88]
+Name=Total connector current value
+Text=<IF WV Connected>%WV Current%<S=-85> A<S><ELSE>--<IF>
+PositionX=196
+PositionY=843
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=125
+TextColor=EEF6FC
+
+[Layer89]
+Name=Average connector voltage label
+Text=AVERAGE VOLTAGE
+PositionX=20
+PositionY=891
+ExtentX=165
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer90]
+Name=Average connector voltage value
+Text=<IF WV Connected>%WV Voltage%<S=-85> V<S><ELSE>--<IF>
+PositionX=196
+PositionY=889
+ExtentX=110
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=125
+TextColor=EEF6FC
+
+[Layer91]
+Name=TEMP IN label
+Text=TEMP IN
+PositionX=347
+PositionY=795
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer92]
+Name=TEMP IN value
+Text=<IF WV Connected>%WV IN%<S=-85> °C<S><ELSE>--<IF>
+PositionX=475
+PositionY=793
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=125
+TextColor=EEF6FC
+
+[Layer93]
+Name=TEMP OUT label
+Text=TEMP OUT
+PositionX=347
+PositionY=827
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer94]
+Name=TEMP OUT value
+Text=<IF WV Connected>%WV OUT%<S=-85> °C<S><ELSE>--<IF>
+PositionX=475
+PositionY=825
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=125
+TextColor=EEF6FC
+
+[Layer95]
+Name=TEMP EXT 1 label
+Text=TEMP EXT 1
+PositionX=347
+PositionY=859
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer96]
+Name=TEMP EXT 1 value
+Text=<IF WV Connected>%WV EXT 1%<S=-85> °C<S><ELSE>--<IF>
+PositionX=475
+PositionY=857
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=125
+TextColor=EEF6FC
+
+[Layer97]
+Name=TEMP EXT 2 label
+Text=TEMP EXT 2
+PositionX=347
+PositionY=891
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer98]
+Name=TEMP EXT 2 value
+Text=<IF WV Connected>%WV EXT 2%<S=-85> °C<S><ELSE>--<IF>
+PositionX=475
+PositionY=889
+ExtentX=145
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=125
+TextColor=EEF6FC
+
+[Layer99]
+Name=WireView reading divider
+Text=<B=1,130>
+PositionX=320
+PositionY=789
+ExtentX=1
+ExtentY=130
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer100]
+Name=Pin table title
+Text=PER-PIN READINGS
+PositionX=20
+PositionY=935
+ExtentX=600
+ExtentY=25
+ExtentOrigin=0
+FixedAlignment=1
+Size=110
+TextColor=35D9EF
+
+[Layer101]
+Name=Pin table title separator
+Text=<B=600,1>
+PositionX=20
+PositionY=958
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer102]
+Name=Pin 1 heading
+Text=P1
+PositionX=94
+PositionY=970
+ExtentX=87
+ExtentY=24
+ExtentOrigin=1
+FixedAlignment=1
+Size=100
+TextColor=ADC7DB
+
+[Layer103]
+Name=Pin 1 V value
+Text=<IF WV Connected>%WV P1 V%<ELSE>--<IF>
+PositionX=94
+PositionY=1003
+ExtentX=87
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer104]
+Name=Pin 1 A value
+Text=<IF WV Connected>%WV P1 A%<ELSE>--<IF>
+PositionX=94
+PositionY=1033
+ExtentX=87
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer105]
+Name=Pin 1 W value
+Text=<IF WV Connected>%WV P1 W%<ELSE>--<IF>
+PositionX=94
+PositionY=1063
+ExtentX=87
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer106]
+Name=Pin 2 heading
+Text=P2
+PositionX=181
+PositionY=970
+ExtentX=88
+ExtentY=24
+ExtentOrigin=1
+FixedAlignment=1
+Size=100
+TextColor=ADC7DB
+
+[Layer107]
+Name=Pin 2 V value
+Text=<IF WV Connected>%WV P2 V%<ELSE>--<IF>
+PositionX=181
+PositionY=1003
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer108]
+Name=Pin 2 A value
+Text=<IF WV Connected>%WV P2 A%<ELSE>--<IF>
+PositionX=181
+PositionY=1033
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer109]
+Name=Pin 2 W value
+Text=<IF WV Connected>%WV P2 W%<ELSE>--<IF>
+PositionX=181
+PositionY=1063
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer110]
+Name=Pin 3 heading
+Text=P3
+PositionX=269
+PositionY=970
+ExtentX=88
+ExtentY=24
+ExtentOrigin=1
+FixedAlignment=1
+Size=100
+TextColor=ADC7DB
+
+[Layer111]
+Name=Pin 3 V value
+Text=<IF WV Connected>%WV P3 V%<ELSE>--<IF>
+PositionX=269
+PositionY=1003
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer112]
+Name=Pin 3 A value
+Text=<IF WV Connected>%WV P3 A%<ELSE>--<IF>
+PositionX=269
+PositionY=1033
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer113]
+Name=Pin 3 W value
+Text=<IF WV Connected>%WV P3 W%<ELSE>--<IF>
+PositionX=269
+PositionY=1063
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer114]
+Name=Pin 4 heading
+Text=P4
+PositionX=357
+PositionY=970
+ExtentX=87
+ExtentY=24
+ExtentOrigin=1
+FixedAlignment=1
+Size=100
+TextColor=ADC7DB
+
+[Layer115]
+Name=Pin 4 V value
+Text=<IF WV Connected>%WV P4 V%<ELSE>--<IF>
+PositionX=357
+PositionY=1003
+ExtentX=87
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer116]
+Name=Pin 4 A value
+Text=<IF WV Connected>%WV P4 A%<ELSE>--<IF>
+PositionX=357
+PositionY=1033
+ExtentX=87
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer117]
+Name=Pin 4 W value
+Text=<IF WV Connected>%WV P4 W%<ELSE>--<IF>
+PositionX=357
+PositionY=1063
+ExtentX=87
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer118]
+Name=Pin 5 heading
+Text=P5
+PositionX=444
+PositionY=970
+ExtentX=88
+ExtentY=24
+ExtentOrigin=1
+FixedAlignment=1
+Size=100
+TextColor=ADC7DB
+
+[Layer119]
+Name=Pin 5 V value
+Text=<IF WV Connected>%WV P5 V%<ELSE>--<IF>
+PositionX=444
+PositionY=1003
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer120]
+Name=Pin 5 A value
+Text=<IF WV Connected>%WV P5 A%<ELSE>--<IF>
+PositionX=444
+PositionY=1033
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer121]
+Name=Pin 5 W value
+Text=<IF WV Connected>%WV P5 W%<ELSE>--<IF>
+PositionX=444
+PositionY=1063
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer122]
+Name=Pin 6 heading
+Text=P6
+PositionX=532
+PositionY=970
+ExtentX=88
+ExtentY=24
+ExtentOrigin=1
+FixedAlignment=1
+Size=100
+TextColor=ADC7DB
+
+[Layer123]
+Name=Pin 6 V value
+Text=<IF WV Connected>%WV P6 V%<ELSE>--<IF>
+PositionX=532
+PositionY=1003
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer124]
+Name=Pin 6 A value
+Text=<IF WV Connected>%WV P6 A%<ELSE>--<IF>
+PositionX=532
+PositionY=1033
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer125]
+Name=Pin 6 W value
+Text=<IF WV Connected>%WV P6 W%<ELSE>--<IF>
+PositionX=532
+PositionY=1063
+ExtentX=88
+ExtentY=27
+ExtentOrigin=1
+FixedAlignment=1
+Size=110
+TextColor=EEF6FC
+
+[Layer126]
+Name=Pin V row label
+Text=V (V)
+PositionX=20
+PositionY=1003
+ExtentX=68
+ExtentY=25
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer127]
+Name=Pin A row label
+Text=A (A)
+PositionX=20
+PositionY=1033
+ExtentX=68
+ExtentY=25
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer128]
+Name=Pin W row label
+Text=W (W)
+PositionX=20
+PositionY=1063
+ExtentX=68
+ExtentY=25
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer129]
+Name=Pin table row separator 995
+Text=<B=600,1>
+PositionX=20
+PositionY=995
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer130]
+Name=Pin table row separator 1027
+Text=<B=600,1>
+PositionX=20
+PositionY=1027
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer131]
+Name=Pin table row separator 1057
+Text=<B=600,1>
+PositionX=20
+PositionY=1057
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer132]
+Name=Pin table row separator 1092
+Text=<B=600,1>
+PositionX=20
+PositionY=1092
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer133]
+Name=Pin table column separator 94
+Text=<B=1,127>
+PositionX=94
+PositionY=965
+ExtentX=1
+ExtentY=127
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer134]
+Name=Pin table column separator 181
+Text=<B=1,127>
+PositionX=181
+PositionY=965
+ExtentX=1
+ExtentY=127
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer135]
+Name=Pin table column separator 269
+Text=<B=1,127>
+PositionX=269
+PositionY=965
+ExtentX=1
+ExtentY=127
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer136]
+Name=Pin table column separator 357
+Text=<B=1,127>
+PositionX=357
+PositionY=965
+ExtentX=1
+ExtentY=127
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer137]
+Name=Pin table column separator 444
+Text=<B=1,127>
+PositionX=444
+PositionY=965
+ExtentX=1
+ExtentY=127
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer138]
+Name=Pin table column separator 532
+Text=<B=1,127>
+PositionX=532
+PositionY=965
+ExtentX=1
+ExtentY=127
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer139]
+Name=Pin table column separator 620
+Text=<B=1,127>
+PositionX=620
+PositionY=965
+ExtentX=1
+ExtentY=127
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer140]
+Name=Cable rating label
+Text=CABLE RATING
+PositionX=20
+PositionY=1112
+ExtentX=165
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer141]
+Name=Cable rating value
+Text=<IF WV Connected>%WV Cable%<S=-85> W<S><ELSE>--<IF>
+PositionX=196
+PositionY=1107
+ExtentX=110
+ExtentY=30
+ExtentOrigin=0
+FixedAlignment=1
+Size=125
+TextColor=EEF6FC
+
+[Layer142]
+Name=WireView fan label
+Text=FAN DUTY
+PositionX=347
+PositionY=1112
+ExtentX=115
+ExtentY=24
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer143]
+Name=WireView fan value
+Text=<IF WV Connected>%WV Fan%<S=-85> %<S><ELSE>--<IF>
+PositionX=535
+PositionY=1107
+ExtentX=85
+ExtentY=30
+ExtentOrigin=2
+FixedAlignment=1
+Size=125
+TextColor=EEF6FC
+
+[Layer144]
+Name=WireView footer divider
+Text=<B=1,28>
+PositionX=320
+PositionY=1105
+ExtentX=1
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer145]
+Name=WireView block separator
+Text=<B=600,1>
+PositionX=20
+PositionY=1147
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer146]
+Name=Performance heading
+Text=PERFORMANCE
+PositionX=20
+PositionY=1165
+ExtentX=600
+ExtentY=28
+ExtentOrigin=0
+FixedAlignment=1
+Size=135
+TextColor=35D9EF
+
+[Layer147]
+Name=Performance heading separator
+Text=<B=600,1>
+PositionX=20
+PositionY=1196
+ExtentX=600
+ExtentY=1
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=385981A3
+
+[Layer148]
+Name=Performance API label
+Text=API
+PositionX=20
+PositionY=1211
+ExtentX=128
+ExtentY=26
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer149]
+Name=Performance API value
+Text=<API>
+PositionX=150
+PositionY=1207
+ExtentX=156
+ExtentY=35
+ExtentOrigin=0
+FixedAlignment=1
+Size=125
+TextColor=EEF6FC
+
+[Layer150]
+Name=Performance FPS label
+Text=FPS
+PositionX=20
+PositionY=1248
+ExtentX=128
+ExtentY=26
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer151]
+Name=Performance FPS value
+Text=<FR><S=-90> FPS<S>
+PositionX=150
+PositionY=1244
+ExtentX=156
+ExtentY=35
+ExtentOrigin=0
+FixedAlignment=1
+Size=140
+TextColor=EEF6FC
+
+[Layer152]
+Name=Performance FRAMETIME label
+Text=FRAMETIME
+PositionX=20
+PositionY=1285
+ExtentX=128
+ExtentY=26
+ExtentOrigin=0
+FixedAlignment=1
+Size=90
+TextColor=ADC7DB
+
+[Layer153]
+Name=Performance FRAMETIME value
+Text=<FT><S=-90> ms<S>
+PositionX=150
+PositionY=1281
+ExtentX=156
+ExtentY=35
+ExtentOrigin=0
+FixedAlignment=1
+Size=140
+TextColor=EEF6FC
+
+[Layer154]
+Name=Performance column divider
+Text=<B=1,117>
+PositionX=320
+PositionY=1205
+ExtentX=1
+ExtentY=117
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=285981A3
+
+[Layer155]
+Name=Framerate graph label
+Text=FPS
+PositionX=347
+PositionY=1208
+ExtentX=170
+ExtentY=20
+ExtentOrigin=0
+FixedAlignment=1
+Size=80
+TextColor=ADC7DB
+
+[Layer156]
+Name=Framerate graph current
+Text=<FR>
+PositionX=540
+PositionY=1208
+ExtentX=80
+ExtentY=20
+ExtentOrigin=2
+FixedAlignment=1
+Size=80
+TextColor=EEF6FC
+
+[Layer157]
+Name=Framerate graph
+Text=<G=Framerate,273,29,1,0,200,80>
+PositionX=347
+PositionY=1231
+ExtentX=273
+ExtentY=29
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=35D9EF
+
+[Layer158]
+Name=Frametime graph label
+Text=FRAMETIME
+PositionX=347
+PositionY=1271
+ExtentX=170
+ExtentY=20
+ExtentOrigin=0
+FixedAlignment=1
+Size=80
+TextColor=ADC7DB
+
+[Layer159]
+Name=Frametime graph current
+Text=<FT>
+PositionX=540
+PositionY=1271
+ExtentX=80
+ExtentY=20
+ExtentOrigin=2
+FixedAlignment=1
+Size=80
+TextColor=EEF6FC
+
+[Layer160]
+Name=Frametime graph
+Text=<G=Frametime,273,29,1,0,33.3,80>
+PositionX=347
+PositionY=1294
+ExtentX=273
+ExtentY=29
+ExtentOrigin=0
+FixedAlignment=1
+Size=100
+TextColor=35D9EF
+
